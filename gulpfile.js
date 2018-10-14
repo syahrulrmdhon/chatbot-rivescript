@@ -18,6 +18,11 @@ gulp.task('copyHtml',function(){
         .pipe(gulp.dest('dest'));
 })
 
+gulp.task('copyRive',function(){
+    return gulp.src(['src/js/*.rive'])
+        .pipe(gulp.dest('dest/js'));
+})
+
 
 gulp.task('minify',function(){
     return gulp.src(['src/js/*.js'])
@@ -32,12 +37,13 @@ gulp.task('minify',function(){
 })
 
 //Watch and Serve
-gulp.task('serve',['min-css','minify','copyHtml'],function(){
+gulp.task('serve',['min-css','minify','copyHtml','copyRive'],function(){
     browserSync.init({
         server: './dest'
     });
     gulp.watch(['src/css/*.css'],['min-css']);
     gulp.watch(['src/js/*.js'],['minify']);
+    gulp.watch(['src/js/*.rive'],['copyRive']);
     gulp.watch(['src/*.html'],['copyHtml']).on('change',browserSync.reload);
 });
 

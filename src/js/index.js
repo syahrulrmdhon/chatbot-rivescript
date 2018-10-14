@@ -12,37 +12,66 @@ function tutupchat() {
     document.getElementById("chat-box").style.display = "none";
 }
 
+
+
 $(function() {
     var INDEX = 0; 
+    var bot = new RiveScript();
+    bot.loadFile("js/brain.rive").then(brainReady).catch(brainError);;
+
+    function brainReady() {
+      console.log('Brain ready');
+      
+    }
+
+    function brainError() {
+      console.log("Brain Error");
+    }
+
     $("#chat-submit").click(function(e) {
       e.preventDefault();
-      var msg = $("#chat-input").val(); 
-      if(msg.trim() == ''){
-        return false;
-      }
-      generate_message(msg, 'self');
+      bot.sortReplies();
+      var input = $("#chat-input").val(); 
+      var msg;
+      var promise = bot.reply("local-user", input).then(function(reply) {
+        console.log("The bot says: " + reply);
+        msg = reply;
+      });
+      generate_message(msg,input, 'self');
       setTimeout(function() {      
-        generate_message(msg, 'user');  
+        generate_message(msg,input, 'user');  
       }, 1000)
       
     })
     
-    function generate_message(msg, type) {
+    function generate_message(msg,input, type) {
       INDEX++;
-      var str="";
-      str += "<div id='cm-msg-"+INDEX+"' class=\"chat-msg "+type+"\">";
-      str += "          <span class=\"msg-avatar\">";
-      str += "            <img id='img-msg-"+INDEX+"' src=\"https:\/\/image.ibb.co\/fK7R8p\/customer_service.png\">";
-      str += "          <\/span>";
-      str += "          <div class=\"cm-msg-text\">";
-      str += msg;
-      str += "          <\/div>";
-      str += "        <\/div>";
-      $(".chat-logs").append(str);
-      $("#cm-msg-"+INDEX).hide().fadeIn(300);
       var a = INDEX % 2;
       if (a == 1) {
+          var str="";
+          str += "<div id='cm-msg-"+INDEX+"' class=\"chat-msg "+type+"\">";
+          str += "          <span class=\"msg-avatar\">";
+          str += "            <img id='img-msg-"+INDEX+"' src=\"https:\/\/image.ibb.co\/fK7R8p\/customer_service.png\">";
+          str += "          <\/span>";
+          str += "          <div class=\"cm-msg-text\">";
+          str += input;
+          str += "          <\/div>";
+          str += "        <\/div>";
+          $(".chat-logs").append(str);
+          $("#cm-msg-"+INDEX).hide().fadeIn(300);
           $("#img-msg-"+INDEX).attr('src','https://image.ibb.co/jAFfM9/user.png');
+      } else {
+          var str="";
+          str += "<div id='cm-msg-"+INDEX+"' class=\"chat-msg "+type+"\">";
+          str += "          <span class=\"msg-avatar\">";
+          str += "            <img id='img-msg-"+INDEX+"' src=\"https:\/\/image.ibb.co\/fK7R8p\/customer_service.png\">";
+          str += "          <\/span>";
+          str += "          <div class=\"cm-msg-text\">";
+          str += msg;
+          str += "          <\/div>";
+          str += "        <\/div>";
+          $(".chat-logs").append(str);
+          $("#cm-msg-"+INDEX).hide().fadeIn(300);
       }
       if(type == 'self'){
        $("#chat-input").val(''); 
