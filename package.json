@@ -1,0 +1,26 @@
+{
+  "name": "chatbot-rivescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/syahrulrmdhon/chatbot-rivescript.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/syahrulrmdhon/chatbot-rivescript/issues"
+  },
+  "homepage": "https://github.com/syahrulrmdhon/chatbot-rivescript#readme",
+  "dependencies": {
+    "browser-sync": "^2.26.0",
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-uglify": "^3.0.1"
+  }
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <script
+  src="https://code.jquery.com/jquery-1.12.4.min.js"
+  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/index.min.js"></script>
+</head>
+<body>
+
+        <div id="help-box">
+                <ul class="ul-box">
+                    <li class="li-box btn btn-raised" onclick="welcome()">
+                        <img class="welcome-img" src="https://image.ibb.co/fK7R8p/customer_service.png" alt="customer_service" width="40px"/>
+                        <p class="service">Bantuan</p>
+                    </li>
+                    <li class="li-box btn btn-raised">
+                        <i class="fa fa-mail-bulk icon-layan"></i>
+                        <p class="service">Layanan</p>  Kami
+                    </li>
+                    <li class="li-box btn btn-raised">
+                        <i class="fa fa-download icon-layan"></i>
+                        <p class="service">Unduh</p>
+                    </li>
+                </ul>
+            </div>
+            <div id="welcome-chat-box" class="chat-box sb"> 
+                <div class="welcome-chat-header">
+                    <img class="welcome-img" src="https://image.ibb.co/fK7R8p/customer_service.png" alt="customer_service" width="150px"/>
+                    <h3>Selamat datang di Allianz Indonesia</h3>
+                    <p class="welcome-message">Saya Alz, saya akan membantu Anda mencari informasi yang Anda butuhkan</p>
+                </div>
+                <div class="start-chat-header" onclick="chatbox()">
+                    MULAI
+                </div>
+            </div>
+            <div id="chat-box" class="chat-box sb">
+                <div class="chat-header">
+                    <img class="img-header-chat-box" src="http://www.logovaults.com/stock_thumb/big-allianz-2013-01-28.jpg" width="120px">
+                    <i class="btn btn-raised" onclick="tutupchat()"><i class="fa fa-times icon-cross"></i></i>
+                </div>
+    
+                <div class="chat-body">
+                    <div class="chat-box-overlay">   
+                    </div>
+                    <div class="chat-logs">
+                        <h2>Selamat datang di Allianz Indonesia</h2>
+                        <p class="welcome-message">Saya Alz, saya akan membantu Anda mencari informasi yang Anda butuhkan</p>
+                    
+                    </div><!--chat-log -->
+                </div>
+    
+                <div class="chat-input">      
+                    <form>
+                        <input type="text" id="chat-input" placeholder="Send a message..."/>
+                        <button type="submit" class="chat-submit" id="chat-submit"><i class="icon-send"></i></button>
+                    </form>      
+                </div>
+                
+    
+            </div>
+    
+    
+</body>
+</html>
